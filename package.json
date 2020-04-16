@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/modelon/impact-webapp-example.git"
+    "url": "git+https://github.com/modelon-community/impact-webapp-example.git"
   },
   "author": "Modelon AB",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/modelon/impact-webapp-example/issues"
+    "url": "https://github.com/modelon-community/impact-webapp-example/issues"
   },
-  "homepage": "https://github.com/modelon/impact-webapp-example#readme",
+  "homepage": "https://github.com/modelon-community/impact-webapp-example#readme",
   "devDependencies": {
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.3",
@@ -25,7 +25,7 @@
     "webpack-dev": "^1.1.1"
   },
   "dependencies": {
-    "impact-js-sdk": "file:../impact-js-sdk",
+    "impact-js-sdk": "file:../impact-client-js",
     "plotly.js-dist": "^1.53.0"
   }
 }
