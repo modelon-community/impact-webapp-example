@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+  Modelon Impact Webapp Example
+
+  Copyright 2020 Modelon AB
+
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  DEALINGS IN THE SOFTWARE.
+-->
+<html>
+  <head>
+    <title>Pressure cycle</title>
+    <style>
+      input,
+      label {
+        display: block;
+      }
+
+      input[type="text"],
+      input[type="range"] {
+        width: 150px;
+      }
+
+      label {
+        font-size: 14px;
+      }
+
+      body {
+        font-family: "trebuchet ms ", helvetica, sans-serif;
+      }
+
+      fieldset {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="myform">
+      <fieldset>
+        <legend>Parameters</legend>
+
+        <div style="display: flex; justify-content: space-around">
+          <div>
+            <h3>Handle</h3>
+
+            <label
+              >Height
+
+              <input type="text" id="height" value="0.9" />
+
+              <input
+                type="range"
+                min="0"
+                step="0.01"
+                max="1"
+                value="0.9"
+                class="slider"
+                id="heightSlider"
+              />
+            </label>
+          </div>
+
+          <div>
+            <h3>Pump</h3>
+
+            <label
+              >Nominal
+              <input type="text" id="p_a_nominal" value="130000" />
+            </label>
+          </div>
+        </div>
+
+        <p style="display: flex; flex-direction: column; align-items: flex-end">
+          <input id="simulate" type="submit" value="Simulate" />
+        </p>
+      </fieldset>
+    </form>
+
+    <div id="plotlyContainer"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
