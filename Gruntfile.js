@@ -5,7 +5,10 @@ module.exports = function(grunt) {
     webpack: {
       myConfig: {
         entry: {
-          "pressure-cycle": "./src/pressure-cycle/index.js"
+          "pressure-cycle": "./src/pressure-cycle/index.js",
+          "custom-function": "./src/custom-function/index.js",
+          "multi-simulation": "./src/multi-simulation/index.js",
+          simulation: "./src/simulation/index.js"
         },
         output: {
           filename: "[name]/main.js",

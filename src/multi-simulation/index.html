@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+  Modelon Impact Webapp Example
+
+  Copyright 2020 Modelon AB
+
+  See LICENSE for terms
+-->
+<html>
+  <head>
+    <title>Multisimulation</title>
+    <style>
+      input,
+      label {
+        display: block;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      label {
+        font-size: 14px;
+        flex-grow: 1;
+      }
+
+      body {
+        font-family: "trebuchet ms ", helvetica, sans-serif;
+      }
+
+      fieldset {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .results {
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin: 20px;
+        padding: 20px;
+        display: none;
+      }
+
+      .experiment {
+        margin-top: 10px;
+        display: none;
+      }
+
+      .experiment div {
+        display: flex;
+        align-items: baseline;
+      }
+
+      .experiment input {
+        width: 50px;
+        height: 18px;
+      }
+
+      .experiment select {
+        width: 200px;
+        height: 18px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <legend>Parameters</legend>
+
+        <div style="display: flex; justify-content: space-around">
+          <div style="flex-grow: 1">
+            <label style="padding-right: 10px">
+              Model name
+              <input
+                id="modelname"
+                value="Modelica.Blocks.Examples.PID_Controller"
+              />
+            </label>
+
+            <label class="experiment">
+              Experiment
+              <div>
+                <select id="range-variable"></select
+                >&nbsp;= range(
+                <input id="min" type="number" placeholder="min" />
+                ,
+                <input id="max" type="number" placeholder="max" />
+                ,
+                <input id="steps" type="number" placeholder="steps" />
+                )
+              </div>
+            </label>
+          </div>
+
+          <p
+            style="display: flex; flex-direction: column; align-items: flex-end"
+          >
+            <input id="simulate" type="submit" value="Simulate" />
+          </p>
+        </div>
+      </fieldset>
+    </form>
+
+    <div class="results">
+      <label>
+        x-axis
+        <select id="x-variables"></select>
+      </label>
+      <label>
+        y-axis
+        <select id="y-variables"></select>
+      </label>
+
+      <div id="plotlyContainer"></div>
+    </div>
+    <script src="/multi-simulation/main.js"></script>
+  </body>
+</html>

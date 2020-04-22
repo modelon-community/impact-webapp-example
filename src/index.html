@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+  Modelon Impact Webapp Example
+
+  Copyright 2020 Modelon AB
+
+  See LICENSE for terms
+-->
+<html>
+  <head>
+    <title>Modelon Impact Webapp Examples</title>
+  </head>
+  <body>
+    <h1>Modelon Impact Webapp Examples</h1>
+    <label for="workspaceId">Workspace ID</label>
+    <input name="workspaceId" />
+    <ul>
+      <li><a href="/custom-function">Custom Function</a></li>
+      <li><a href="/multi-simulation">Multi Simulation</a></li>
+      <li><a href="/pressure-cycle">Pressure Cycle</a></li>
+      <li><a href="/simulation">Simulation</a></li>
+    </ul>
+  </body>
+  <script>
+    (function() {
+      document.querySelectorAll("a").forEach(function(element) {
+        element.addEventListener(
+          "click",
+          function(event) {
+            event.preventDefault();
+            var workspaceId = document.querySelector("input").value;
+            window.location.href = element.href + "?workspaceId=" + workspaceId;
+          },
+          false
+        );
+      });
+    })();
+  </script>
+</html>
