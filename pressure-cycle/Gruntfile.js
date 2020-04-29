@@ -4,11 +4,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     webpack: {
       myConfig: {
-        entry: {
-          "pressure-cycle": "./src/pressure-cycle/index.js"
-        },
+        mode: "development",
+        entry: "./src/index.js",
         output: {
-          filename: "[name]/main.js",
+          filename: "main.js",
           path: path.resolve(__dirname, "dist")
         }
       }
@@ -17,7 +16,7 @@ module.exports = function(grunt) {
     copy: {
       all: {
         cwd: "src",
-        src: ["**/*.html", "**/*.json"],
+        src: ["**", "!**/*.js"],
         dest: "dist",
         expand: true
       }
@@ -31,7 +30,7 @@ module.exports = function(grunt) {
         tasks: ["webpack"]
       },
       copy: {
-        files: ["src/**/*.html", "src/**/*.json"],
+        files: ["src/**", "!src/**/*.js"],
         tasks: ["copy"]
       }
     }

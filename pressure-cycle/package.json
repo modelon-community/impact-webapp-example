@@ -1,21 +1,14 @@
 {
-  "name": "impact-webapp-example",
+  "name": "pressure-cycle-example",
   "version": "0.0.1",
-  "description": "An example of Impact Webapps",
+  "description": "A pressure cycle example",
   "scripts": {
     "build": "grunt",
     "watch": "grunt watch",
     "start": "node proxy.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/modelon-community/impact-webapp-example.git"
-  },
   "author": "Modelon AB",
   "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/modelon-community/impact-webapp-example/issues"
-  },
   "homepage": "https://github.com/modelon-community/impact-webapp-example#readme",
   "devDependencies": {
     "express": "^4.17.1",
@@ -29,7 +22,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "impact-client": "file:../impact-client-js",
+    "impact-client": "../../impact-client-js",
     "plotly.js-dist": "^1.53.0"
   }
 }
