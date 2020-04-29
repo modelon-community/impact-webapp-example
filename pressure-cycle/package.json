@@ -5,7 +5,8 @@
   "scripts": {
     "build": "grunt",
     "watch": "grunt watch",
-    "start": "node proxy.js"
+    "proxy": "node proxy.js",
+    "clean": "grunt clean"
   },
   "author": "Modelon AB",
   "license": "BSD-3-Clause",
