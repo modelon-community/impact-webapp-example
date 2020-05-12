@@ -1,0 +1,22 @@
+input,
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="range"] {
+  width: 150px;
+}
+
+label {
+  font-size: 14px;
+}
+
+body {
+  font-family: "trebuchet ms ", helvetica, sans-serif;
+}
+
+fieldset {
+  max-width: 500px;
+  margin: 0 auto;
+}
