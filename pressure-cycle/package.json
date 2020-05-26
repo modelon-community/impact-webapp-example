@@ -1,6 +1,6 @@
 {
   "name": "pressure-cycle-example",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A pressure cycle example",
   "scripts": {
     "build": "grunt",
@@ -23,7 +23,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "impact-client": "../../impact-client-js",
+    "@modelon/impact-client": "^1.0.0",
     "plotly.js-dist": "^1.53.0"
   }
 }

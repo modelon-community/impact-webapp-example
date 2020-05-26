@@ -6,7 +6,7 @@
  * See LICENSE for terms
  */
 
-const impact = require("impact-client");
+const impact = require("@modelon/impact-client");
 const Plotly = require("plotly.js-dist");
 
 impact.cloneWorkspace().then(cloneDescriptor => {
@@ -34,14 +34,14 @@ impact.cloneWorkspace().then(cloneDescriptor => {
 
     myform.elements["simulate"].disabled = true;
 
-    apiClient.compile(modelName).then(fmuId =>
+    apiClient.compile(modelName).then(fmu =>
       apiClient
-        .simulate(fmuId, { start_time: 0, final_time: 6000 }, variables)
-        .then(experimentId => {
+        .simulate(fmu, { start_time: 0, final_time: 6000 }, variables)
+        .then(experiment => {
           myform.elements["simulate"].disabled = false;
 
           apiClient
-            .getVariables(experimentId, [
+            .getVariableValues(experiment, [
               "tank.ports[1].p",
               "tank.ports[2].p",
               "pump.port_a.p",
