@@ -6,7 +6,7 @@
  * See LICENSE for terms
  */
 
-const impact = require("@modelon/impact-client");
+const impact = require("@modelon/impact-client-js");
 const Plotly = require("plotly.js-dist");
 
 impact.cloneWorkspace().then(cloneDescriptor => {

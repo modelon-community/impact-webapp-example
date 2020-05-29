@@ -23,7 +23,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "@modelon/impact-client": "^1.1.1",
+    "@modelon/impact-client-js": "^1.1.3",
     "plotly.js-dist": "^1.53.0"
   }
 }
