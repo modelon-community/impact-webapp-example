@@ -33,9 +33,9 @@ impact.cloneWorkspace().then(cloneDescriptor => {
 
       myform.elements["simulate"].disabled = true;
 
-      apiClient.compile(modelName).then(fmu =>
+      apiClient.compile({class_name : modelName}).then(fmu =>
         apiClient
-          .simulate(fmu, { start_time: 0, final_time: 6000 }, variables)
+          .simulate(fmu, variables, { start_time: 0, final_time: 6000 })
           .then(experiment => {
             myform.elements["simulate"].disabled = false;
 
