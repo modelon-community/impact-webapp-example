@@ -1,0 +1,26 @@
+{
+  "name": "Impact-webapp-example",
+  "format": "1.0.0",
+  "dependencies": [
+    {
+      "name": "Modelica",
+      "versionSpecifier": "4.0.0"
+    }
+  ],
+  "content": [
+    {
+      "relpath": "pressure-cycle",
+      "contentType": "GENERIC",
+      "defaultDisabled": false,
+      "id": "dac4da8806544fb38ce6c056cf587fa9"
+    },
+    {
+      "relpath": "Examples",
+      "contentType": "MODELICA",
+      "name": "Examples",
+      "defaultDisabled": false,
+      "id": "4354a929c7f246adbaf5e77e86887be3"
+    }
+  ],
+  "executionOptions": []
+}
