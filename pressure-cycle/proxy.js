@@ -36,12 +36,14 @@
 const express = require("express");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const target = process.env.TARGET || "http://localhost:8080";
+const target = process.env.TARGET || "https://jhmi-staging.modelon.com/user/marcus.aberg@modelon.com/";
 const port = parseInt(process.env.PORT) || 3000;
 
 const app = express();
 
 app.use(express.static("dist"));
+
+// Requests tp localhost:3000/api goes to proxy instead
 app.use("/api", createProxyMiddleware({ target, changeOrigin: true }));
 
 console.log(`Proxying requests to ${target} from port ${port}`);
