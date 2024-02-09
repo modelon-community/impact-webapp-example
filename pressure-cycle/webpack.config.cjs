@@ -7,6 +7,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProduction = process.env.NODE_ENV == 'production';
@@ -55,6 +56,13 @@ const config = {
             filename: 'index.html',
             template: 'src/template.html',
         }),
+        
+        new CopyWebpackPlugin({
+            patterns: [
+              { from: 'metadata.json', to: 'metadata.json' }, // Adjust the source and destination paths as needed
+            ],
+        }),
+
         /*
         // Use to analyze bundle size 
         new BundleAnalyzerPlugin({
@@ -62,7 +70,7 @@ const config = {
             analyzerPort: 4000,
         }) 
         */
-
+       
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
