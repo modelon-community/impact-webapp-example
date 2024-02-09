@@ -6,7 +6,7 @@
 * See LICENSE for terms
 */
 
-import Plotly from 'plotly.js-dist-min';
+import Plotly from 'plotly.js-basic-dist-min';
 import { Analysis, ExperimentDefinition, Model } from '@modelon/impact-client-js';
 import createClient from './utils/createClient';
 import getQueryParameter from './utils/getQueryParameter';
