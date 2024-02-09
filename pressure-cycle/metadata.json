@@ -1,4 +1,6 @@
 {
   "title": "Pressure cycle example",
-  "description": ""
+  "description": "",
+  "category": "Custom add-ins",
+  "requireWorkspace": true
 }
