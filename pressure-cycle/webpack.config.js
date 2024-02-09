@@ -1,7 +1,4 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
-// TODO: Need to include metadata.json into dist
-// TODO: Need to denote how impact knows that dist is the files to be picked up and showed in UI
-// TODO: We do not want to have to commit /dist to the repository -> how to solve this?
 
 const path = require('path');
 
@@ -33,7 +30,6 @@ const config = {
         open: true,
         hot: true,
         compress: true,
-        historyApiFallback: true,
         allowedHosts: [ // Adds the host we are working on as allowed as webpack by default inly allows the same host - TODO: Possible to read current host and add?
         '.modelon.com'
         ]
@@ -42,7 +38,7 @@ const config = {
         extensions: ['.js'], // This allows us to omit the extension (.js) when importing the listed file extensions as modules
         fallback: {
           util: require.resolve("util/")
-          // This should probably be fixed in impact-client-js.
+          // TODO: This should probably be fixed in impact-client-js.
           // What if our locally installed version of util differs from the one used by i-c-js for example?
           // The issue is that webpack 5 does not include polyfill by default which seems to be needed by the util package which is a sub-dependency to impact-client-js
           // We should probably build impact-client-js with babel/polyfill
