@@ -6,64 +6,19 @@
 * See LICENSE for terms
 */
 
-import Plotly from 'plotly.js-dist';
-import { Analysis, Client, ExperimentDefinition } from '@modelon/impact-client-js';
+import Plotly from 'plotly.js-dist-min';
+import { Analysis, ExperimentDefinition, Model } from '@modelon/impact-client-js';
+import createClient from './utils/createClient';
+import getQueryParameter from './utils/getQueryParameter';
+import './style.css';
 
-const getCookieValue = (key) => {
-  const parts = `; ${document.cookie}`.split(`; ${key}=`);
-  return parts.length === 2 ? parts.pop().split(";").shift() : undefined;
-};
 
-const makeRequest = (url, method) => {
-  // Base URL for api
-  return fetch(url, method)
-    .then(response => {
-      // Check if the response status is OK (status code 200-299)
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
-
-      // Parse the response body as JSON
-      return response.json();
-    })
-    .catch(error => {
-      console.error('Request failed:', error.message);
-      throw error; // Rethrow the error to handle it at the caller level if needed
-    });
-};
-
-const getQueryParameter = () => {
-  const queryString = window.location.search;
-  const searchParams = new URLSearchParams(queryString);
-  return searchParams.get(parameter);
-}
-
-const getJupyterHubUserPath = () => window.location.pathname.split("/impact/")[0] + "/impact/";
-
-const getImpactToken = () => getCookieValue("access_token");
-
-const getJupyterHubToken = async () => {
-  const tokenUrl = getJupyterHubUserPath + "api/workspace-management/token";
-  return await makeRequest(tokenUrl, "get")
-};
-
-const getServerAddress = () => window.location.origin;
-
-const createClient = async () => {
-  const impactToken = getImpactToken();
-  const jupyterHubUserPath = getJupyterHubUserPath();
-  const serverAddress = getServerAddress();
-  const jupyterHubToken = await getImpactToken();
-  const client = Client.fromImpactToken({impactToken, jupyterHubToken, jupyterHubUserPath, serverAddress});
-  return client;
-}
-
-createClient.then(client => {
+createClient().then(client => {
   let variables = {};
-  const modelName = getQueryParameter("model");
-  const workspaceId =  getQueryParameter("workspaceId");
+  const modelName = "Examples.HeatingSystem";
+  const workspaceId =  getQueryParameter("workspaceId") ?? "web-app-dev";
   const myform = document.getElementById("myform");
-
+  
   // hook up input change events to dispatch setParameter event
   myform.elements["height"].addEventListener("change", event => {
     variables["handle.height"] = event.target.value;
@@ -96,7 +51,7 @@ createClient.then(client => {
 
     myform.elements["simulate"].disabled = false;
 
-    const trajectories = await experiment.getTrajectories([
+    const variableNames = [
       "tank.ports[1].p",
       "tank.ports[2].p",
       "pump.port_a.p",
@@ -109,9 +64,12 @@ createClient.then(client => {
       "valve.port_b.p",
       "radiator.port_a.p",
       "radiator.port_b.p"
-    ]);
+    ];
+
+    const cases = await experiment.getTrajectories(variableNames);
+    const trajectories = cases[0].items;
     
-    const index = trajectories["tank.ports[1].p"][0].length - 1;
+    const lastIndex = trajectories[0].trajectory.length - 1;
 
     const labels = [
       "tank",
@@ -122,19 +80,30 @@ createClient.then(client => {
       "radiator"
     ];
 
+    function findIndex(entry) {
+      let index = -1
+      variableNames.forEach((variableValue, variableIndex) => {
+        if (variableValue === entry) {
+          index = variableIndex;
+        }
+      });
+
+      return index; // Return -1 if the entry is not found in the array
+    }
+  
     const values = [
-      trajectories["tank.ports[2].p"][0][index] -
-        trajectories["tank.ports[1].p"][0][index],
-      trajectories["pump.port_b.p"][0][index] -
-        trajectories["pump.port_a.p"][0][index],
-      trajectories["heater.port_b.p"][0][index] -
-        trajectories["heater.port_a.p"][0][index],
-      trajectories["pipe.port_b.p"][0][index] -
-        trajectories["pipe.port_a.p"][0][index],
-      trajectories["valve.port_b.p"][0][index] -
-        trajectories["valve.port_a.p"][0][index],
-      trajectories["radiator.port_b.p"][0][index] -
-        trajectories["radiator.port_a.p"][0][index]
+      trajectories[findIndex("tank.ports[2].p")].trajectory[lastIndex] -
+        trajectories[findIndex("tank.ports[1].p")].trajectory[lastIndex],
+      trajectories[findIndex("pump.port_b.p")].trajectory[lastIndex] -
+        trajectories[findIndex("pump.port_a.p")].trajectory[lastIndex],
+      trajectories[findIndex("heater.port_b.p")].trajectory[lastIndex] -
+        trajectories[findIndex("heater.port_a.p")].trajectory[lastIndex],
+      trajectories[findIndex("pipe.port_b.p")].trajectory[lastIndex] -
+        trajectories[findIndex("pipe.port_a.p")].trajectory[lastIndex],
+      trajectories[findIndex("valve.port_b.p")].trajectory[lastIndex] -
+        trajectories[findIndex("valve.port_a.p")].trajectory[lastIndex],
+      trajectories[findIndex("radiator.port_b.p")].trajectory[lastIndex] -
+        trajectories[findIndex("radiator.port_a.p")].trajectory[lastIndex]
     ];
 
     const y = values.reduce(
