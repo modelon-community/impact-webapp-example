@@ -5,6 +5,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProduction = process.env.NODE_ENV == 'production';
@@ -58,6 +59,8 @@ const config = {
               { from: 'metadata.json', to: 'metadata.json' }, // Adjust the source and destination paths as needed
             ],
         }),
+
+        new Dotenv(),
 
         /*
         // Use to analyze bundle size 
