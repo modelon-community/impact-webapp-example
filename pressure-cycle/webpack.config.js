@@ -1,12 +1,15 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
+// This is to be able to use .env in this file.
+const dotenv = require('dotenv'); 
+dotenv.config();
+
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const DotenvPlugin = require('dotenv-webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -33,7 +36,24 @@ const config = {
         compress: true,
         allowedHosts: [ // Adds the host we are working on as allowed as webpack by default inly allows the same host - TODO: Possible to read current host and add?
         '.modelon.com'
-        ]
+        ],
+        proxy: {
+            "/api": {
+                changeOrigin: true,
+                secure: false,
+                target: `${process.env.MODELON_IMPACT_CLIENT_URL}${process.env.JUPYTERHUB_SERVICE_PREFIX}/impact/`,
+            },
+            "/hub": {
+                changeOrigin: true,
+                secure: false,
+                target: `${process.env.MODELON_IMPACT_CLIENT_URL}`,
+            },
+            "/user": {
+                changeOrigin: true,
+                secure: false,
+                target: `${process.env.MODELON_IMPACT_CLIENT_URL}/`,
+            },      
+        },
     },
     resolve: {
         extensions: ['.js'], // This allows us to omit the extension (.js) when importing the listed file extensions as modules
@@ -60,18 +80,7 @@ const config = {
             ],
         }),
 
-        new Dotenv(),
-
-        /*
-        // Use to analyze bundle size 
-        new BundleAnalyzerPlugin({
-            // Default is 8888 and Jupyterlab runs on 8888.
-            analyzerPort: 4000,
-        }) 
-        */
-       
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        new DotenvPlugin(),
     ],
     module: {
         rules: [
@@ -92,9 +101,6 @@ const config = {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
-
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
 };
