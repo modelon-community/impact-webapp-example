@@ -31,9 +31,7 @@ const config = {
         hot: true,
         compress: true,
         // Allow current host when developing on impact server
-        allowedHosts: [ 
-            hostname
-        ],
+        allowedHosts: 'all', // [ hostname ],
         proxy: {
             "/api": {
                 changeOrigin: true,

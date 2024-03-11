@@ -11,12 +11,14 @@ import { Analysis, ExperimentDefinition, Model } from '@modelon/impact-client-js
 import createClient from './utils/createClient';
 import getQueryParameter from './utils/getQueryParameter';
 import './style.css';
+import isDev from './utils/isDev';
 
+const wsNameDev = "webappexample";
 
 createClient().then(client => {
   let variables = {};
   const modelName = "Examples.HeatingSystem";
-  const workspaceId =  getQueryParameter("workspaceId") ?? "web-app-dev";
+  const workspaceId =  isDev() ?  wsNameDev : getQueryParameter("workspaceId");
   const myform = document.getElementById("myform");
   
   // hook up input change events to dispatch setParameter event
