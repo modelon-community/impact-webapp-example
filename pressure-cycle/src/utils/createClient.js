@@ -3,9 +3,7 @@ import isDev from './isDev';
 
 const createClient = async () => {
   if (isDev()) {
-    return Client.fromImpactApiKey({ 
-      impactApiKey: process.env.MODELON_IMPACT_API_KEY, 
-      jupyterHubToken: process.env.JUPYTERHUB_API_TOKEN}); 
+    return Client.fromImpactApiKey({ impactApiKey: process.env.MODELON_IMPACT_API_KEY }); 
   } else {
     return Client.fromImpactSession({});
   }

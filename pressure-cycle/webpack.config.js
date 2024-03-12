@@ -31,12 +31,12 @@ const config = {
         hot: true,
         compress: true,
         // Allow current host when developing on impact server
-        allowedHosts: 'all', // [ hostname ],
+        allowedHosts: "all", // [ hostname ],
         proxy: {
             "/api": {
                 changeOrigin: true,
                 secure: false,
-                target: `${process.env.MODELON_IMPACT_CLIENT_URL}${process.env.JUPYTERHUB_SERVICE_PREFIX}/impact/`,
+                target: `${process.env.MODELON_IMPACT_CLIENT_URL}${process.env.JUPYTERHUB_SERVICE_PREFIX}impact/`,
             },
             "/hub": {
                 changeOrigin: true,
