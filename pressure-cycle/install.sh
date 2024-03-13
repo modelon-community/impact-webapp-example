@@ -2,11 +2,12 @@
 
 # Get the directory of the script
 script_dir=$PWD
+project_dir=$(dirname "$(pwd)")
 script_dir_name=$(basename "$(pwd)")
 impact_customizations_dir="$IMPACT_BASEDIR/customizations"
 
 # Define paths
-source_dir="$script_dir/dist"
+source_dir="$project_dir/Resources/CustomWebApps/$script_dir_name"
 target_dir="$impact_customizations_dir/$script_dir_name"
 
 # Copy /dist into customizations/$current_dir_name

@@ -10,6 +10,9 @@ const DotenvPlugin = require('dotenv-webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
+const outputPath = isProduction 
+    ? path.resolve(path.dirname(__dirname), 'Resources', 'CustomWebApps', path.basename(__dirname))
+    : path.resolve(__dirname, 'dist');
 const hostname = new URL(process.env.MODELON_IMPACT_CLIENT_URL).hostname;
 
 const config = {
@@ -17,14 +20,14 @@ const config = {
         bundle: path.resolve(__dirname, 'src/index.js'),
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: outputPath,
         clean: true,
         assetModuleFilename: '[name][ext]',
     },
     devtool: 'source-map',
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'dist'), 
+            directory: outputPath, 
         },
         port: 3000,
         open: true,
