@@ -1,6 +1,6 @@
 # 🚀 Welcome to an Impact Webapp Example!
 
-This example illustrates how a web app could be implemented and developped for Modelon Impact.
+This example illustrates how a web app could be implemented and developed for Modelon Impact.
 
 ## Develop
 
@@ -22,10 +22,11 @@ npm run build
 
 > **_NOTE:_** Only possible when the project is checked out as a project on an impact server.
 
-This will copy/replace the built code into ~/impact/customizations
 ```sh
-./install.sh
+npm run build
 ```
+
+This will build the app into the designated *CUSTOM_WEB_APPS* folder for the project. After this is run, the app will be available from any workspace that has added this project.
 
 ## Info
 
