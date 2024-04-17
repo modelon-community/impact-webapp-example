@@ -9,8 +9,8 @@
   ],
   "content": [
     {
-      "relpath": "pressure-cycle",
-      "contentType": "GENERIC",
+      "relpath": "Resources/CustomWebApps",
+      "contentType": "CUSTOM_WEB_APPS",
       "defaultDisabled": false,
       "id": "dac4da8806544fb38ce6c056cf587fa9"
     },

@@ -12,19 +12,22 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 const hostname = new URL(process.env.MODELON_IMPACT_CLIENT_URL).hostname;
 
+// Build into project: CUSTOM_WEB_APPS folder (Resources/CustomWebApps)
+const buildPath = path.resolve(__dirname, '..', 'Resources', 'CustomWebApps', path.basename(__dirname))
+
 const config = {
     entry: {
         bundle: path.resolve(__dirname, 'src/index.js'),
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: buildPath,
         clean: true,
         assetModuleFilename: '[name][ext]',
     },
     devtool: 'source-map',
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'dist'), 
+            directory: buildPath, 
         },
         port: 3000,
         open: true,
