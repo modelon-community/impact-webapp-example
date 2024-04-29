@@ -4,7 +4,7 @@ import isDev from "./isDev";
 const createClient = async () => {
   if (isDev()) {
     return Client.fromImpactApiKey({
-      impactApiKey: process.env.MODELON_IMPACT_API_KEY,
+      impactApiKey: process.env.MODELON_IMPACT_CLIENT_API_KEY,
     });
   } else {
     return Client.fromImpactSession({});
