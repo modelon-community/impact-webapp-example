@@ -17,12 +17,12 @@ import getQueryParameter from "./utils/getQueryParameter";
 import "./style.css";
 import isDev from "./utils/isDev";
 
-const wsNameDev = "webappexample";
-
 createClient().then((client) => {
   let variables = {};
   const modelName = "Examples.HeatingSystem";
-  const workspaceId = isDev() ? wsNameDev : getQueryParameter("workspaceId");
+  const workspaceId = isDev()
+    ? process.env.WORKSPACE_ID_DEV
+    : getQueryParameter("workspaceId");
   const myform = document.getElementById("myform");
 
   // hook up input change events to dispatch setParameter event
