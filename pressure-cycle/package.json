@@ -11,7 +11,8 @@
     "serve": "webpack serve"
   },
   "dependencies": {
-    "@modelon/impact-client-js": "^3.2.8",
+    "@modelon/impact-client-js": "^4.0.0-alpha.1",
+    "core-js": "^3.37.0",
     "plotly.js-basic-dist-min": "^2.29.0",
     "util": "^0.12.5"
   },
