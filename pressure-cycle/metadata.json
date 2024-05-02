@@ -1,0 +1,8 @@
+{
+  "title": "Pressure cycle example",
+  "description": "",
+  "category": "Custom add-ins",
+  "requireWorkspace": true,
+  "requireModel": false,
+  "defaultPage": "index.html"
+}

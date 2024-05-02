@@ -1,17 +1,18 @@
-<!DOCTYPE html>
 <!--
   Modelon Impact Webapp Example
 
-  Copyright 2020 Modelon AB
+  Copyright 2024 Modelon AB
 
   See LICENSE for terms
 -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Pressure cycle</title>
-    <link href="style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-
   <body>
     <form id="myform">
       <fieldset>
@@ -55,7 +56,4 @@
     </form>
 
     <div id="plotlyContainer"></div>
-
-    <script src="main.js"></script>
-  </body>
 </html>
