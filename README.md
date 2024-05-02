@@ -1,6 +1,6 @@
 # Modelon Impact Webapp Example
 
-This is an example of how to work with the Modelon Impact Client for Javascript.
+This is an example [Modelon Impact project](https://help.modelon.com/latest/reference/workspace/#projects) of how to work with the Modelon Impact Client for Javascript.
 
 The custom web app example is located in the `pressure-cycle` directory, and presents a good baseline
 on how to develop custom web apps. 
@@ -9,7 +9,7 @@ The `Example` modelica package contains the model utilized by the `pressure-cycl
 
 ## Install
 
-Load this repo as a project using 
+Load this repo as a project using the [project explorer](https://help.modelon.com/latest/articles/ao_project_explorer/) in Modelon Impact. 
 
 In order to use and load the app in a workspace, the app needs to be built. Run the following from the terminal in the vscode plugin:
 
