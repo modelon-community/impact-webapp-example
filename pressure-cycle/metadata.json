@@ -4,5 +4,6 @@
   "category": "Custom add-ins",
   "requireWorkspace": true,
   "requireModel": false,
-  "defaultPage": "index.html"
+  "defaultPage": "index.html",
+  "appModeEnabled": true
 }
